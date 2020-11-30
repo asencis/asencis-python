@@ -68,11 +68,3 @@ print(response.json())
 response = asencis.Quantities.list()
 print(response.json())
 ```
-
-### Handling exceptions
-
-Unsuccessful requests raise exceptions. The class of the exception will reflect
-the sort of error that occurred. Please see the [Api
-Reference](https://stripe.com/docs/api/errors/handling) for a description of
-the error classes you should handle, and for information on how to inspect
-these errors.
