@@ -43,6 +43,4 @@ class RetrieveAPIMixin(object):
         return self._perform_request(action="GET", path=path, data=None, query=None, headers=None)
 
 class SearchAPIMixin(object):
-    def search(self, query, **kwargs):
-        print("Searching the API for Results")
-        return None
+    pass

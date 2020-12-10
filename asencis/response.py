@@ -1,12 +1,13 @@
 class RequestResult(object):
-  """Stores information about a single request and response."""
-  # pylint: disable=too-many-instance-attributes
-
+    """
+    Stores information about a single request and response.
+    """
+    # pylint: disable=too-many-instance-attributes
     def __init__(
         self, method, path, query, request_content,
         response_raw, response_content, status_code, response_headers,
         start_time, end_time
-      ):
+    ):
         """
         :param method:
         HTTP VERB/METHOD
