@@ -6,7 +6,7 @@ class RequestResult(object):
         start_time, end_time
     ):
         """
-        RequesrResult stores information about a single request and response.
+        RequestResult stores information about a single request and response.
         :param method:
         HTTP VERB/METHOD
         :param domain:
