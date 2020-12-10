@@ -38,6 +38,25 @@ class RequestsHTTPClient(object):
     pass
 
 class AsencisAPIClient(RequestsHTTPClient):
+    """
+    Asencis API Client Handler
+    :param secret:
+        Auth token for the asencis API server.
+    :param domain:
+        Base URL for the asencis API server.
+    :param scheme:
+        ``"http"`` or ``"https"``.
+    :param port:
+        Port of the asencis API server.
+    :param timeout:
+        Read timeout in seconds.
+    :param observer:
+        Callback that will be passed a :any:`RequestResult` after every completed request.
+    :param pool_connections:
+        The number of connection pools to cache.
+    :param pool_maxsize:
+        The maximum number of connections to save in the pool.
+    """
     # pylint: disable=too-many-arguments, too-many-instance-attributes
     def __init__(
         self,
@@ -50,24 +69,7 @@ class AsencisAPIClient(RequestsHTTPClient):
         pool_maxsize=10,
         **kwargs
     ):
-        """
-        :param secret:
-            Auth token for the asencis API server.
-        :param domain:
-            Base URL for the asencis API server.
-        :param scheme:
-            ``"http"`` or ``"https"``.
-        :param port:
-            Port of the asencis API server.
-        :param timeout:
-            Read timeout in seconds.
-        :param observer:
-            Callback that will be passed a :any:`RequestResult` after every completed request.
-        :param pool_connections:
-            The number of connection pools to cache.
-        :param pool_maxsize:
-            The maximum number of connections to save in the pool.
-        """
+        # Domain - base of api.asencis.com
         self.domain = domain
         self.scheme = scheme
         self.port = (443 if scheme == "https" else 8983) if port is None else port
@@ -85,9 +87,11 @@ class AsencisAPIClient(RequestsHTTPClient):
         self.realm = kwargs.get('realm', None)
         self.resource = kwargs.get('resource', None)
 
+        # If not the session kwarg, begin session setup:
         if ('session' not in kwargs):
             self.session = requests.Session()
 
+            # Mount the request session adapter:
             self.session.mount(
                 'https://',
                 requests.adapters.HTTPAdapter(
@@ -96,6 +100,8 @@ class AsencisAPIClient(RequestsHTTPClient):
                 )
             )
 
+            # Set the session headers for a machine Driver
+            # (for Dataset metric logging):
             self.session.headers.update({
                 "Accept-Encoding": "gzip",
                 "Content-Type": "application/json;charset=utf-8",
