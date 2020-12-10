@@ -1,7 +1,5 @@
 class RequestResult(object):
-    """
-    Stores information about a single request and response.
-    """
+    """Stores information about a single request and response."""
     # pylint: disable=too-many-instance-attributes
     def __init__(
         self, method, path, query, request_content,
@@ -54,5 +52,5 @@ class RequestResult(object):
 
     @property
     def time_taken(self):
-        """``end_time - start_time``"""
+        """Returns the time take for the request"""
         return self.end_time - self.start_time
