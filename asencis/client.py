@@ -6,12 +6,14 @@ except ImportError:
     requests = None
 else:
     try:
-        # Require version 0.8.8, but don't want to depend on distutils
+        # Require version 2.24.0, but don't want to depend on distutils
         version = requests.__version__
         major, minor, patch = [int(i) for i in version.split(".")]
     except Exception:
         # Probably some new-fangled version, so it should support verify
-        pass
+        sys.stderr.write(
+            "Probably some new-fangled version, so it should support verify"
+        )
     else:
         if (major, minor, patch) < (2, 24, 0):
             sys.stderr.write(
@@ -20,7 +22,7 @@ else:
                 '"requests" library is version %s. asencis will fall back to '
                 "an alternate HTTP library so everything should work. We "
                 'recommend upgrading your "requests" library. If you have any '
-                "questions, please contact support@stripe.com. (HINT: running "
+                "questions, please contact support@asencis.com. (HINT: running "
                 '"pip install -U requests" should upgrade your requests '
                 "library to the latest version.)" % (version,)
             )
@@ -66,7 +68,6 @@ class AsencisAPIClient(RequestsHTTPClient):
         :param pool_maxsize:
             The maximum number of connections to save in the pool.
         """
-
         self.domain = domain
         self.scheme = scheme
         self.port = (443 if scheme == "https" else 8983) if port is None else port

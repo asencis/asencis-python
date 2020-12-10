@@ -1,7 +1,7 @@
 class UUIDValidationException(Exception):
-  """
-  Error returned when the uuid parameter is not valid.
-  """
+    """
+    Error returned when the uuid parameter is not valid.
+    """
 
 class RealmResourceSpecificationException(Exception):
     """

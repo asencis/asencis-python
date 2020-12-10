@@ -1,5 +1,4 @@
 class RequestResult(object):
-    """Stores information about a single request and response."""
     # pylint: disable=too-many-instance-attributes
     def __init__(
         self, method, path, query, request_content,
@@ -7,6 +6,7 @@ class RequestResult(object):
         start_time, end_time
     ):
         """
+        RequesrResult stores information about a single request and response.
         :param method:
         HTTP VERB/METHOD
         :param domain:
@@ -24,7 +24,6 @@ class RequestResult(object):
         :param pool_maxsize:
         The maximum number of connections to save in the pool.
         """
-
         self.method = method
         """"GET" or "POST"."""
         self.path = path
@@ -52,5 +51,5 @@ class RequestResult(object):
 
     @property
     def time_taken(self):
-        """Returns the time take for the request"""
+        """Returns the time take for the request."""
         return self.end_time - self.start_time
