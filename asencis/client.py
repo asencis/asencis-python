@@ -1,4 +1,4 @@
-import json
+import sys
 
 try:
     import requests
@@ -114,3 +114,6 @@ class AsencisAPIClient(RequestsHTTPClient):
         url = self.base_url + "/" + path
         req = requests.Request(action, url, params=query, data=data, headers=headers)
         return self.session.send(self.session.prepare_request(req))
+
+    def _perform_query(self, action, path, data, query, headers):
+        return None

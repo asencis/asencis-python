@@ -12,6 +12,9 @@ class Dataset(
     OBJECT_NAME = "Dataset"
 
     def __init__(self):
+        """
+        Initialise the Dataset API Object
+        """
         super(Dataset, self).__init__(
             realm='datasets',
         )

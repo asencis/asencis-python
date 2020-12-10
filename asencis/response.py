@@ -2,28 +2,28 @@ class RequestResult(object):
   """Stores information about a single request and response."""
   # pylint: disable=too-many-instance-attributes
 
-  def __init__(
-      self, method, path, query, request_content,
-      response_raw, response_content, status_code, response_headers,
-      start_time, end_time
-    ):
+    def __init__(
+        self, method, path, query, request_content,
+        response_raw, response_content, status_code, response_headers,
+        start_time, end_time
+      ):
         """
         :param method:
-            HTTP VERB/METHOD
+        HTTP VERB/METHOD
         :param domain:
-          Base URL for the asencis API server.
+        Base URL for the asencis API server.
         :param scheme:
-          ``"http"`` or ``"https"``.
+        ``"http"`` or ``"https"``.
         :param port:
-          Port of the asencis API server.
+        Port of the asencis API server.
         :param timeout:
-          Read timeout in seconds.
+        Read timeout in seconds.
         :param observer:
-          Callback that will be passed a :any:`RequestResult` after every completed request.
+        Callback that will be passed a :any:`RequestResult` after every completed request.
         :param pool_connections:
-          The number of connection pools to cache.
+        The number of connection pools to cache.
         :param pool_maxsize:
-          The maximum number of connections to save in the pool.
+        The maximum number of connections to save in the pool.
         """
 
         self.method = method
@@ -53,5 +53,5 @@ class RequestResult(object):
 
     @property
     def time_taken(self):
-    """``end_time - start_time``"""
-    return self.end_time - self.start_time
+        """``end_time - start_time``"""
+        return self.end_time - self.start_time

@@ -10,6 +10,9 @@ class Prefix(
     OBJECT_NAME = "Prefix"
 
     def __init__(self):
+        """
+        Initialise the Prefix API Object
+        """
         super(Prefix, self).__init__(
             realm='measurements',
             resource='prefixes'

@@ -10,6 +10,9 @@ class Quantity(
     OBJECT_NAME = "Quantity"
 
     def __init__(self):
+        """
+        Initialise the Quantity API Object
+        """
         super(Quantity, self).__init__(
             realm='measurements',
             resource='quantities'
